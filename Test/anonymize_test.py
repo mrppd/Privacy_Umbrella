@@ -42,20 +42,20 @@ def test_anonymization():
     # Load the Anonymize class
     anonymize = Anonymize()
  
+    # Load original dataset
+    original_df = anonymize.load_original_df()  #
     # Define quasi identifiers
     quasi_identifiers_ori = ['age', 'sex']
-    # Load original dataset
-    original_df = anonymize.load_original_df()  
     # Call the test function
     k_anonymity_level_original = anonymize.find_k(original_df, quasi_identifiers_ori)
     # Show results
-    print(f"K-anonymity level for original dataset: {k_anonymity_level_original}")
+    print(f"K-anonymity level for original dataset: {k_anonymity_level_original}\n")
     
     
-    # Define quasi identifiers
-    quasi_identifiers_ano = ['age_range', 'sex']
     # Load the anonymized dataset
     anonymized_df = anonymize.load_anonymized_df()  
+    # Define quasi identifiers
+    quasi_identifiers_ano = ['age_range', 'sex']
     # Call the test function
     k_anonymity_level_anonymous = anonymize.find_k(anonymized_df, quasi_identifiers_ano)
     # Show results
