@@ -27,6 +27,8 @@ For the heart dataset, the following versions were created:
 - **v1**: Generalized using: rounding up, binning and categorical generalization of values of some attributes.
 - **v2**: Generalized using: binning values of some attributes.
 - **v3**: Generalized using: rounding up and binning into different ranges other than those of v1.
+- **v4**: Generalized using: rounding up, binning and categorical generalization of values of some attributes (similar to v1, but suppressed based on different parameter values for k-anonymity).
+- **v5**: Generalized using: adding noise to the original data values.
 
 Versions v1, v2, and v3 are more suitable for testing anonymization using partitioning- and grouping-based metrics.
 
