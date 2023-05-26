@@ -12,11 +12,12 @@ This repository contains 2 folders:
 
 For the sepsis dataset, the following versions were created:
 
-- **v1**: Generalized using Approach 1.
-- **v2**: Generalized using Approach 2.
-- **v4**: Generalized using Approach 4, with added noise to the original values.
+- **v1**: Generalized using: binning values of some attributes.
+- **v2**: Generalized using: binning values of some attributes, other than those of v1.
+- **v3**: Generalized using: suppression of rows according to some pre-selected attributes based on l-diversity metric.
+- **v4**: Generalized using: adding noise to the original data values.
 
-Versions v1, v2, and v3 are more suitable for testing anonymization using partitioning- and grouping-based metrics.
+Versions v1 and v2 are more suitable for testing anonymization using partitioning- and grouping-based metrics.
 
 ---
 
@@ -27,10 +28,10 @@ For the heart dataset, the following versions were created:
 - **v1**: Generalized using: rounding up, binning and categorical generalization of values of some attributes.
 - **v2**: Generalized using: binning values of some attributes.
 - **v3**: Generalized using: rounding up and binning into different ranges other than those of v1.
-- **v4**: Generalized using: rounding up, binning and categorical generalization of values of some attributes (similar to v1, but suppressed based on different parameter values for k-anonymity).
+- **v4**: Generalized using: rounding up, binning and categorical generalization of values of some attributes (similar to v1, but suppressed based on different parameter values for l-diversity).
 - **v5**: Generalized using: adding noise to the original data values.
 
-Versions v1, v2, and v3 are more suitable for testing anonymization using partitioning- and grouping-based metrics.
+Versions v1, v2, v3 and v4 are more suitable for testing anonymization using partitioning- and grouping-based metrics.
 
 ---
 
@@ -55,7 +56,7 @@ It is recommended, but not required, to follow the guidelines below for testing 
 - Test for k-anonymity using `k = 3` and the following quasi-identifiers: `['Age', 'Temp', 'O2Sat', 'WBC', 'Resp', 'Gender']`.
 - Test for l-diversity using the same quasi-identifiers as mentioned above.
 
-**For v1_heart:**
+**For v1_heart and v2_heart:**
 
 - Test for k-anonymity using `k = 3` and the following quasi-identifiers: `['age', 'sex', 'cp', 'trestbps', 'chol', 'fbs', 'restecg', 'thalach', 'exang', 'oldpeak', 'slope', 'ca', 'thal']`.
 - Test for l-diversity using the quasi-identifiers: `['age', 'sex']`.
@@ -65,16 +66,16 @@ It is recommended, but not required, to follow the guidelines below for testing 
 - Test for k-anonymity using `k = 5` and the following quasi-identifiers: `['sex', 'cp', 'trestbps', 'fbs', 'restecg', 'thalach', 'exang', 'slope','ca', 'thal', 'age_range', 'chol_range', 'oldpeak_range']`.
 - Test for l-diversity using the quasi-identifiers: `['Age', 'Gender']`.
 
-**For v2_heart:**
+**For v3_heart:**
 
 - Test for k-anonymity using `k = 5` and the following quasi-identifiers: `['Age', 'Gender', 'HR', 'SBP', 'MAP', 'DBP']`.
 - Test for l-diversity using the quasi-identifiers: `['age', 'sex']`.
 
-**For v4_sepsis:**
+**For v3_sepsis andv4_sepsis:**
 
 - If testing with l-diversity, use `['Age', 'Gender']` as quasi-identifiers.
 
-**For v3_heart:**
+**For v4_heart:**
 
 - If testing with l-divers
 
@@ -82,7 +83,7 @@ ity, use `['age_range', 'sex', 'restecg', 'fbs']` as quasi-identifiers.
 
 **For Noise-based Metrics (e.g., Differential Privacy):**
 
-- Test with v3_sepsis and v4_heart.
+- Test with v3_sepsis, v4_sepsis and v5_heart.
 
 ---
 
