@@ -77,9 +77,7 @@ It is recommended, but not required, to follow the guidelines below for testing 
 
 **For v4_heart:**
 
-- If testing with l-divers
-
-ity, use `['age_range', 'sex', 'restecg', 'fbs']` as quasi-identifiers.
+- If testing with l-diversity, use `['age_range', 'sex', 'restecg', 'fbs']` as quasi-identifiers.
 
 **For Noise-based Metrics (e.g., Differential Privacy):**
 
