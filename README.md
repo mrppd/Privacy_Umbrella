@@ -24,9 +24,9 @@ Versions v1, v2, and v3 are more suitable for testing anonymization using partit
 
 For the heart dataset, the following versions were created:
 
-- **v1**: Generalized using Approach 1.
-- **v2**: Generalized using Approach 2.
-- **v3**: Generalized using Approach 3, with added noise to the original values.
+- **v1**: Generalized using: rounding up, binning and categorical generalization of values of some attributes.
+- **v2**: Generalized using: binning values of some attributes.
+- **v3**: Generalized using: rounding up and binning into different ranges other than those of v1.
 
 Versions v1, v2, and v3 are more suitable for testing anonymization using partitioning- and grouping-based metrics.
 
