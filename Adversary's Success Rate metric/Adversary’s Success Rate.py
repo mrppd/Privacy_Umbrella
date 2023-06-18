@@ -33,7 +33,8 @@ class Anonymize:
         for record in dataset: # record = s'
             attributes = set(record.keys()).intersection(set(aux.keys())) #Only compare those values which are present
             sim = sum(self.sim(record[i], aux[i]) for i in attributes)
-            sim_per = sim/15 # %-value describing the similarity between target record and dataset record
+            sim_per = sim/len(attributes) # %-value describing the similarity between target record and dataset record
+            print(len(attributes))
             error = 1 - sim_per # 1 - similarity is the error or dissimilarity between target record and dataset record
             if sim >= sT:
                 if sim == 1.0: # if the %-value describing the similarity is 1.0, we have a perfect match
@@ -147,7 +148,7 @@ def test_anonymization():
                 #print("---------------------------------------------------------------------------------------------------------")
             print(sum(results) / len(results))
 
-            print("<------------------------------------------------anonymized dataset------------------------------------------------>")
+            #print("<------------------------------------------------anonymized dataset------------------------------------------------>")
 
 
             # for every auxiliary information the adversary has, we output how many similar records we found and a percentage value
