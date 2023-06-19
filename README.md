@@ -4,7 +4,7 @@ This repository contains 2 folders:
 
 1. **Original Datasets**: This folder includes the sepsis and heart datasets, along with a PDF file summarizing both datasets.
 
-2. **Anonymized Datasets**: This folder contains various versions of each original dataset, anonymized using different approaches.
+2. **Anonymized Datasets**: This folder contains various versions of each original dataset, anonymized using different approaches. Some of the datasets are compressed due to their large size.
 
 ---
 
