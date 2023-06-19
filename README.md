@@ -111,11 +111,11 @@ It is recommended, but not required, to follow the guidelines below for testing 
 
 - Test with v3_sepsis, v4_sepsis and v5_heart.
 
----
-
 **For v1_kidney:**
 
-- If testing with k-anonymity, use `['age', 'bp', 'bgr', 'bu', 'sc', 'hemo', 'wc', 'rc']` as quasi-identifiers.
+- Test for k-anonymity using `k = 2` and the following quasi-identifiers `['age', 'bp', 'bgr', 'bu', 'sc', 'hemo', 'wc', 'rc']` as quasi-identifiers.
+
+---
 
 **For Noise-based Metrics (e.g., Differential Privacy):**
 
