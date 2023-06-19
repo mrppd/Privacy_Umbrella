@@ -47,7 +47,7 @@ Version v2 is more suitable for testing anonymization using partitioning- and gr
 
 ---
 
-### Kidney Dataset Anonymization
+### Kidney Disease Dataset Anonymization
 
 For the personal key indicators dataset, the following versions were created:
 
