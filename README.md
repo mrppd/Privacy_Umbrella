@@ -35,6 +35,30 @@ Versions v1, v2, v3 and v4 are more suitable for testing anonymization using par
 
 ---
 
+### Personal Key Indicators for a Heart Disease Dataset Anonymization
+
+For the personal key indicators dataset, the following versions were created:
+
+- **v1**: Generalized using: adding noise to the original data values.
+- **v2**: Generalized using: binning and categorical generalization of values of some attributes.
+
+
+Version v2 is more suitable for testing anonymization using partitioning- and grouping-based metrics.
+
+---
+
+### Kidney Dataset Anonymization
+
+For the personal key indicators dataset, the following versions were created:
+
+- **v1**: Generalized using: rounding up, binning and categorical generalization of values of some attributes.
+- **v2**: Generalized using: adding noise to the original data values.
+
+
+Version v1 is more suitable for testing anonymization using partitioning- and grouping-based metrics.
+
+---
+
 ### Sensitive Attribute Information
 
 In both datasets, the sensitive attribute is as follows:
@@ -42,6 +66,10 @@ In both datasets, the sensitive attribute is as follows:
 - Sepsis Dataset: Attribute name: `sepsisLabel`. Binary attribute.
 
 - Heart Dataset: Attribute name: `target`. Binary attribute.
+
+- Personal Key Indicators Dataset: Attribute name: `HeartDisease`. Binary attribute.
+
+- Kidney Disease Dataset: Attribute name: `classification`. Binary attribute.
 
 Note: In some cases, such as with l-diversity, the parameter `l` can only have the value of 2 due to the binary nature of the sensitive attribute.
 
@@ -71,7 +99,7 @@ It is recommended, but not required, to follow the guidelines below for testing 
 - Test for k-anonymity using `k = 5` and the following quasi-identifiers: `['Age', 'Gender', 'HR', 'SBP', 'MAP', 'DBP']`.
 - Test for l-diversity using the quasi-identifiers: `['age', 'sex']`.
 
-**For v3_sepsis andv4_sepsis:**
+**For v3_sepsis and v4_sepsis:**
 
 - If testing with l-diversity, use `['Age', 'Gender']` as quasi-identifiers.
 
@@ -82,6 +110,16 @@ It is recommended, but not required, to follow the guidelines below for testing 
 **For Noise-based Metrics (e.g., Differential Privacy):**
 
 - Test with v3_sepsis, v4_sepsis and v5_heart.
+
+---
+
+**For v1_kidney:**
+
+- If testing with k-anonymity, use `['age', 'bp', 'bgr', 'bu', 'sc', 'hemo', 'wc', 'rc']` as quasi-identifiers.
+
+**For Noise-based Metrics (e.g., Differential Privacy):**
+
+- Test with v3_sepsis, v4_sepsis, v5_heart, v1_personal_key_nidicators and v2_kidney.
 
 ---
 
