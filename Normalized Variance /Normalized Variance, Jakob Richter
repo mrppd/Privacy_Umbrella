@@ -1,0 +1,485 @@
+"""
+author = Jakob Richter, 6531094
+
+"""
+
+
+import pandas as pd
+
+def calculate_normalized_variance(csv_file_X, csv_file_Y, column_name):
+    # Read the CSV files into pandas DataFrames
+    df_X = pd.read_csv(csv_file_X)
+    df_Y = pd.read_csv(csv_file_Y)
+
+    # Drop rows with missing values in the specified column
+    df_X = df_X.dropna(subset=[column_name])
+    df_Y = df_Y.dropna(subset=[column_name])
+
+    # Extract the column data
+    X = df_X[column_name].values
+    Y = df_Y[column_name].values
+    
+    # Calculate the difference between X and Y
+    diff = X - Y
+    
+    # Calculate the variances
+    var_diff = diff.var()
+    var_X = X.var()
+    var_Y = Y.var()
+
+    # Calculate the normalized variance
+    privacy = var_diff / var_X
+
+    return column_name, privacy, var_diff, var_X, var_Y, diff, X, Y
+
+# Usage for the Heart Dataset
+print("Heart Dataset")
+
+csv_file_X = 'heart.csv'
+csv_file_Y = 'v5_heart.csv'
+
+# Print the results with attribute names
+column_name = 'age'
+column_name, normalized_variance, var_diff, var_X, var_Y, diff, X, Y = \
+             calculate_normalized_variance(csv_file_X, csv_file_Y, column_name)
+print(f"\nNormalized Variance (Privacy) of {column_name}: {normalized_variance}")
+print(f"Variance of X - Y in {column_name} (var_diff): {var_diff}")
+print(f"Variance of {column_name} in X (var_X): {var_X}")
+print(f"Variance of {column_name} in Y (var_Y): {var_Y}")
+
+# Print the range of each DataFrame
+print(f"\nMinimum, Maximum and Range of {column_name} in X:")
+print(X.min(), X.max(), abs(X.max() - X.min()))
+print(f"\nMinimum, Maximum and Range of {column_name} in Y:")
+print(Y.min(), Y.max(), abs(Y.max() - Y.min()))
+print(f"\nMinimum, Maximum and Range of {column_name} in diff:")
+print(diff.min(), diff.max(), abs(diff.max() - diff.min()))
+
+column_name = 'trestbps'
+column_name, normalized_variance, var_diff, var_X, var_Y, diff, X, Y = \
+             calculate_normalized_variance(csv_file_X, csv_file_Y, column_name)
+print(f"\nNormalized Variance (Privacy) of {column_name}: {normalized_variance}")
+print(f"Variance of X - Y in {column_name} (var_diff): {var_diff}")
+print(f"Variance of {column_name} in X (var_X): {var_X}")
+print(f"Variance of {column_name} in Y (var_Y): {var_Y}")
+
+print(f"\nMinimum, Maximum and Range of {column_name} in X:")
+print(X.min(), X.max(), abs(X.max() - X.min()))
+print(f"\nMinimum, Maximum and Range of {column_name} in Y:")
+print(Y.min(), Y.max(), abs(Y.max() - Y.min()))
+print(f"\nMinimum, Maximum and Range of {column_name} in diff:")
+print(diff.min(), diff.max(), abs(diff.max() - diff.min()))
+
+
+column_name = 'chol'
+column_name, normalized_variance, var_diff, var_X, var_Y, diff, X, Y = \
+             calculate_normalized_variance(csv_file_X, csv_file_Y, column_name)
+print(f"\nNormalized Variance (Privacy) of {column_name}: {normalized_variance}")
+print(f"Variance of X - Y in {column_name} (var_diff): {var_diff}")
+print(f"Variance of {column_name} in X (var_X): {var_X}")
+print(f"Variance of {column_name} in Y (var_Y): {var_Y}")
+
+print(f"\nMinimum, Maximum and Range of {column_name} in X:")
+print(X.min(), X.max(), abs(X.max() - X.min()))
+print(f"\nMinimum, Maximum and Range of {column_name} in Y:")
+print(Y.min(), Y.max(), abs(Y.max() - Y.min()))
+print(f"\nMinimum, Maximum and Range of {column_name} in diff:")
+print(diff.min(), diff.max(), abs(diff.max() - diff.min()))
+
+column_name = 'thalach'
+column_name, normalized_variance, var_diff, var_X, var_Y, diff, X, Y = \
+             calculate_normalized_variance(csv_file_X, csv_file_Y, column_name)
+print(f"\nNormalized Variance (Privacy) of {column_name}: {normalized_variance}")
+print(f"Variance of X - Y in {column_name} (var_diff): {var_diff}")
+print(f"Variance of {column_name} in X (var_X): {var_X}")
+print(f"Variance of {column_name} in Y (var_Y): {var_Y}")
+
+print(f"\nMinimum, Maximum and Range of {column_name} in X:")
+print(X.min(), X.max(), abs(X.max() - X.min()))
+print(f"\nMinimum, Maximum and Range of {column_name} in Y:")
+print(Y.min(), Y.max(), abs(Y.max() - Y.min()))
+print(f"\nMinimum, Maximum and Range of {column_name} in diff:")
+print(diff.min(), diff.max(), abs(diff.max() - diff.min()))
+
+column_name = 'oldpeak'
+column_name, normalized_variance, var_diff, var_X, var_Y, diff, X, Y = \
+             calculate_normalized_variance(csv_file_X, csv_file_Y, column_name)
+print(f"\nNormalized Variance (Privacy) of {column_name}: {normalized_variance}")
+print(f"Variance of X - Y in {column_name} (var_diff): {var_diff}")
+print(f"Variance of {column_name} in X (var_X): {var_X}")
+print(f"Variance of {column_name} in Y (var_Y): {var_Y}")
+
+print(f"\nMinimum, Maximum and Range of {column_name} in X:")
+print(X.min(), X.max(), abs(X.max() - X.min()))
+print(f"\nMinimum, Maximum and Range of {column_name} in Y:")
+print(Y.min(), Y.max(), abs(Y.max() - Y.min()))
+print(f"\nMinimum, Maximum and Range of {column_name} in diff:")
+print(diff.min(), diff.max(), abs(diff.max() - diff.min()))
+print(" ")
+print(" ")
+print(" ")
+print(" ")
+
+print("Sepsis Dataset")
+
+csv_file_X = 'sepsis.csv'
+csv_file_Y = 'v4_sepsis.csv'
+
+column_name = 'Age'
+column_name, normalized_variance, var_diff, var_X, var_Y, diff, X, Y = \
+             calculate_normalized_variance(csv_file_X, csv_file_Y, column_name)
+print(f"\nNormalized Variance (Privacy) of {column_name}: {normalized_variance}")
+print(f"Variance of X - Y in {column_name} (var_diff): {var_diff}")
+print(f"Variance of {column_name} in X (var_X): {var_X}")
+print(f"Variance of {column_name} in Y (var_Y): {var_Y}")
+
+print(f"\nMinimum, Maximum and Range of {column_name} in X:")
+print(X.min(), X.max(), abs(X.max() - X.min()))
+print(f"\nMinimum, Maximum and Range of {column_name} in Y:")
+print(Y.min(), Y.max(), abs(Y.max() - Y.min()))
+print(f"\nMinimum, Maximum and Range of {column_name} in diff:")
+print(diff.min(), diff.max(), abs(diff.max() - diff.min()))
+
+column_name = 'HR'
+column_name, normalized_variance, var_diff, var_X, var_Y, diff, X, Y = \
+             calculate_normalized_variance(csv_file_X, csv_file_Y, column_name)
+print(f"\nNormalized Variance (Privacy) of {column_name}: {normalized_variance}")
+print(f"Variance of X - Y in {column_name} (var_diff): {var_diff}")
+print(f"Variance of {column_name} in X (var_X): {var_X}")
+print(f"Variance of {column_name} in Y (var_Y): {var_Y}")
+
+print(f"\nMinimum, Maximum and Range of {column_name} in X:")
+print(X.min(), X.max(), abs(X.max() - X.min()))
+print(f"\nMinimum, Maximum and Range of {column_name} in Y:")
+print(Y.min(), Y.max(), abs(Y.max() - Y.min()))
+print(f"\nMinimum, Maximum and Range of {column_name} in diff:")
+print(diff.min(), diff.max(), abs(diff.max() - diff.min()))
+
+column_name = 'O2Sat'
+column_name, normalized_variance, var_diff, var_X, var_Y, diff, X, Y = \
+             calculate_normalized_variance(csv_file_X, csv_file_Y, column_name)
+print(f"\nNormalized Variance (Privacy) of {column_name}: {normalized_variance}")
+print(f"Variance of X - Y in {column_name} (var_diff): {var_diff}")
+print(f"Variance of {column_name} in X (var_X): {var_X}")
+print(f"Variance of {column_name} in Y (var_Y): {var_Y}")
+
+print(f"\nMinimum, Maximum and Range of {column_name} in X:")
+print(X.min(), X.max(), abs(X.max() - X.min()))
+print(f"\nMinimum, Maximum and Range of {column_name} in Y:")
+print(Y.min(), Y.max(), abs(Y.max() - Y.min()))
+print(f"\nMinimum, Maximum and Range of {column_name} in diff:")
+print(diff.min(), diff.max(), abs(diff.max() - diff.min()))
+
+column_name = 'Temp'
+column_name, normalized_variance, var_diff, var_X, var_Y, diff, X, Y = \
+             calculate_normalized_variance(csv_file_X, csv_file_Y, column_name)
+print(f"\nNormalized Variance (Privacy) of {column_name}: {normalized_variance}")
+print(f"Variance of X - Y in {column_name} (var_diff): {var_diff}")
+print(f"Variance of {column_name} in X (var_X): {var_X}")
+print(f"Variance of {column_name} in Y (var_Y): {var_Y}")
+
+print(f"\nMinimum, Maximum and Range of {column_name} in X:")
+print(X.min(), X.max(), abs(X.max() - X.min()))
+print(f"\nMinimum, Maximum and Range of {column_name} in Y:")
+print(Y.min(), Y.max(), abs(Y.max() - Y.min()))
+print(f"\nMinimum, Maximum and Range of {column_name} in diff:")
+print(diff.min(), diff.max(), abs(diff.max() - diff.min()))
+
+column_name = 'SBP'
+column_name, normalized_variance, var_diff, var_X, var_Y, diff, X, Y = \
+             calculate_normalized_variance(csv_file_X, csv_file_Y, column_name)
+print(f"\nNormalized Variance (Privacy) of {column_name}: {normalized_variance}")
+print(f"Variance of X - Y in {column_name} (var_diff): {var_diff}")
+print(f"Variance of {column_name} in X (var_X): {var_X}")
+print(f"Variance of {column_name} in Y (var_Y): {var_Y}")
+
+print(f"\nMinimum, Maximum and Range of {column_name} in X:")
+print(X.min(), X.max(), abs(X.max() - X.min()))
+print(f"\nMinimum, Maximum and Range of {column_name} in Y:")
+print(Y.min(), Y.max(), abs(Y.max() - Y.min()))
+print(f"\nMinimum, Maximum and Range of {column_name} in diff:")
+print(diff.min(), diff.max(), abs(diff.max() - diff.min()))
+
+column_name = 'MAP'
+column_name, normalized_variance, var_diff, var_X, var_Y, diff, X, Y = \
+             calculate_normalized_variance(csv_file_X, csv_file_Y, column_name)
+print(f"\nNormalized Variance (Privacy) of {column_name}: {normalized_variance}")
+print(f"Variance of X - Y in {column_name} (var_diff): {var_diff}")
+print(f"Variance of {column_name} in X (var_X): {var_X}")
+print(f"Variance of {column_name} in Y (var_Y): {var_Y}")
+
+print(f"\nMinimum, Maximum and Range of {column_name} in X:")
+print(X.min(), X.max(), abs(X.max() - X.min()))
+print(f"\nMinimum, Maximum and Range of {column_name} in Y:")
+print(Y.min(), Y.max(), abs(Y.max() - Y.min()))
+print(f"\nMinimum, Maximum and Range of {column_name} in diff:")
+print(diff.min(), diff.max(), abs(diff.max() - diff.min()))
+
+column_name = 'DBP'
+column_name, normalized_variance, var_diff, var_X, var_Y, diff, X, Y = \
+             calculate_normalized_variance(csv_file_X, csv_file_Y, column_name)
+print(f"\nNormalized Variance (Privacy) of {column_name}: {normalized_variance}")
+print(f"Variance of X - Y in {column_name} (var_diff): {var_diff}")
+print(f"Variance of {column_name} in X (var_X): {var_X}")
+print(f"Variance of {column_name} in Y (var_Y): {var_Y}")
+
+print(f"\nMinimum, Maximum and Range of {column_name} in X:")
+print(X.min(), X.max(), abs(X.max() - X.min()))
+print(f"\nMinimum, Maximum and Range of {column_name} in Y:")
+print(Y.min(), Y.max(), abs(Y.max() - Y.min()))
+print(f"\nMinimum, Maximum and Range of {column_name} in diff:")
+print(diff.min(), diff.max(), abs(diff.max() - diff.min()))
+
+column_name = 'Resp'
+ccolumn_name, normalized_variance, var_diff, var_X, var_Y, diff, X, Y = \
+             calculate_normalized_variance(csv_file_X, csv_file_Y, column_name)
+print(f"\nNormalized Variance (Privacy) of {column_name}: {normalized_variance}")
+print(f"Variance of X - Y in {column_name} (var_diff): {var_diff}")
+print(f"Variance of {column_name} in X (var_X): {var_X}")
+print(f"Variance of {column_name} in Y (var_Y): {var_Y}")
+
+print(f"\nMinimum, Maximum and Range of {column_name} in X:")
+print(X.min(), X.max(), abs(X.max() - X.min()))
+print(f"\nMinimum, Maximum and Range of {column_name} in Y:")
+print(Y.min(), Y.max(), abs(Y.max() - Y.min()))
+print(f"\nMinimum, Maximum and Range of {column_name} in diff:")
+print(diff.min(), diff.max(), abs(diff.max() - diff.min()))
+
+column_name = 'Hgb'
+column_name, normalized_variance, var_diff, var_X, var_Y, diff, X, Y = \
+             calculate_normalized_variance(csv_file_X, csv_file_Y, column_name)
+print(f"\nNormalized Variance (Privacy) of {column_name}: {normalized_variance}")
+print(f"Variance of X - Y in {column_name} (var_diff): {var_diff}")
+print(f"Variance of {column_name} in X (var_X): {var_X}")
+print(f"Variance of {column_name} in Y (var_Y): {var_Y}")
+
+print(f"\nMinimum, Maximum and Range of {column_name} in X:")
+print(X.min(), X.max(), abs(X.max() - X.min()))
+print(f"\nMinimum, Maximum and Range of {column_name} in Y:")
+print(Y.min(), Y.max(), abs(Y.max() - Y.min()))
+print(f"\nMinimum, Maximum and Range of {column_name} in diff:")
+print(diff.min(), diff.max(), abs(diff.max() - diff.min()))
+
+column_name = 'WBC'
+column_name, normalized_variance, var_diff, var_X, var_Y, diff, X, Y = \
+             calculate_normalized_variance(csv_file_X, csv_file_Y, column_name)
+print(f"\nNormalized Variance (Privacy) of {column_name}: {normalized_variance}")
+print(f"Variance of X - Y in {column_name} (var_diff): {var_diff}")
+print(f"Variance of {column_name} in X (var_X): {var_X}")
+print(f"Variance of {column_name} in Y (var_Y): {var_Y}")
+
+print(f"\nMinimum, Maximum and Range of {column_name} in X:")
+print(X.min(), X.max(), abs(X.max() - X.min()))
+print(f"\nMinimum, Maximum and Range of {column_name} in Y:")
+print(Y.min(), Y.max(), abs(Y.max() - Y.min()))
+print(f"\nMinimum, Maximum and Range of {column_name} in diff:")
+print(diff.min(), diff.max(), abs(diff.max() - diff.min()))
+
+column_name = 'Glucose'
+column_name, normalized_variance, var_diff, var_X, var_Y, diff, X, Y = \
+             calculate_normalized_variance(csv_file_X, csv_file_Y, column_name)
+print(f"\nNormalized Variance (Privacy) of {column_name}: {normalized_variance}")
+print(f"Variance of X - Y in {column_name} (var_diff): {var_diff}")
+print(f"Variance of {column_name} in X (var_X): {var_X}")
+print(f"Variance of {column_name} in Y (var_Y): {var_Y}")
+
+print(f"\nMinimum, Maximum and Range of {column_name} in X:")
+print(X.min(), X.max(), abs(X.max() - X.min()))
+print(f"\nMinimum, Maximum and Range of {column_name} in Y:")
+print(Y.min(), Y.max(), abs(Y.max() - Y.min()))
+print(f"\nMinimum, Maximum and Range of {column_name} in diff:")
+print(diff.min(), diff.max(), abs(diff.max() - diff.min()))
+print(" ")
+print(" ")
+print(" ")
+print(" ")
+
+print("Kidney Dataset")
+
+csv_file_X = 'kidney.csv'
+csv_file_Y = 'v2_kidney.csv'
+
+column_name = 'age'
+column_name, normalized_variance, var_diff, var_X, var_Y, diff, X, Y = \
+             calculate_normalized_variance(csv_file_X, csv_file_Y, column_name)
+print(f"\nNormalized Variance (Privacy) of {column_name}: {normalized_variance}")
+print(f"Variance of X - Y in {column_name} (var_diff): {var_diff}")
+print(f"Variance of {column_name} in X (var_X): {var_X}")
+print(f"Variance of {column_name} in Y (var_Y): {var_Y}")
+
+print(f"\nMinimum, Maximum and Range of {column_name} in X:")
+print(X.min(), X.max(), abs(X.max() - X.min()))
+print(f"\nMinimum, Maximum and Range of {column_name} in Y:")
+print(Y.min(), Y.max(), abs(Y.max() - Y.min()))
+print(f"\nMinimum, Maximum and Range of {column_name} in diff:")
+print(diff.min(), diff.max(), abs(diff.max() - diff.min()))
+
+column_name = 'bp'
+column_name, normalized_variance, var_diff, var_X, var_Y, diff, X, Y = \
+             calculate_normalized_variance(csv_file_X, csv_file_Y, column_name)
+print(f"\nNormalized Variance (Privacy) of {column_name}: {normalized_variance}")
+print(f"Variance of X - Y in {column_name} (var_diff): {var_diff}")
+print(f"Variance of {column_name} in X (var_X): {var_X}")
+print(f"Variance of {column_name} in Y (var_Y): {var_Y}")
+
+print(f"\nMinimum, Maximum and Range of {column_name} in X:")
+print(X.min(), X.max(), abs(X.max() - X.min()))
+print(f"\nMinimum, Maximum and Range of {column_name} in Y:")
+print(Y.min(), Y.max(), abs(Y.max() - Y.min()))
+print(f"\nMinimum, Maximum and Range of {column_name} in diff:")
+print(diff.min(), diff.max(), abs(diff.max() - diff.min()))
+
+
+column_name = 'sg'
+column_name, normalized_variance, var_diff, var_X, var_Y, diff, X, Y = \
+             calculate_normalized_variance(csv_file_X, csv_file_Y, column_name)
+print(f"\nNormalized Variance (Privacy) of {column_name}: {normalized_variance}")
+print(f"Variance of X - Y in {column_name} (var_diff): {var_diff}")
+print(f"Variance of {column_name} in X (var_X): {var_X}")
+print(f"Variance of {column_name} in Y (var_Y): {var_Y}")
+
+print(f"\nMinimum, Maximum and Range of {column_name} in X:")
+print(X.min(), X.max(), abs(X.max() - X.min()))
+print(f"\nMinimum, Maximum and Range of {column_name} in Y:")
+print(Y.min(), Y.max(), abs(Y.max() - Y.min()))
+print(f"\nMinimum, Maximum and Range of {column_name} in diff:")
+print(diff.min(), diff.max(), abs(diff.max() - diff.min()))
+
+column_name = 'bgr'
+column_name, normalized_variance, var_diff, var_X, var_Y, diff, X, Y = \
+             calculate_normalized_variance(csv_file_X, csv_file_Y, column_name)
+print(f"\nNormalized Variance (Privacy) of {column_name}: {normalized_variance}")
+print(f"Variance of X - Y in {column_name} (var_diff): {var_diff}")
+print(f"Variance of {column_name} in X (var_X): {var_X}")
+print(f"Variance of {column_name} in Y (var_Y): {var_Y}")
+
+print(f"\nMinimum, Maximum and Range of {column_name} in X:")
+print(X.min(), X.max(), abs(X.max() - X.min()))
+print(f"\nMinimum, Maximum and Range of {column_name} in Y:")
+print(Y.min(), Y.max(), abs(Y.max() - Y.min()))
+print(f"\nMinimum, Maximum and Range of {column_name} in diff:")
+print(diff.min(), diff.max(), abs(diff.max() - diff.min()))
+
+column_name = 'bu'
+column_name, normalized_variance, var_diff, var_X, var_Y, diff, X, Y = \
+             calculate_normalized_variance(csv_file_X, csv_file_Y, column_name)
+print(f"\nNormalized Variance (Privacy) of {column_name}: {normalized_variance}")
+print(f"Variance of X - Y in {column_name} (var_diff): {var_diff}")
+print(f"Variance of {column_name} in X (var_X): {var_X}")
+print(f"Variance of {column_name} in Y (var_Y): {var_Y}")
+
+print(f"\nMinimum, Maximum and Range of {column_name} in X:")
+print(X.min(), X.max(), abs(X.max() - X.min()))
+print(f"\nMinimum, Maximum and Range of {column_name} in Y:")
+print(Y.min(), Y.max(), abs(Y.max() - Y.min()))
+print(f"\nMinimum, Maximum and Range of {column_name} in diff:")
+print(diff.min(), diff.max(), abs(diff.max() - diff.min()))
+
+column_name = 'sc'
+column_name, normalized_variance, var_diff, var_X, var_Y, diff, X, Y = \
+             calculate_normalized_variance(csv_file_X, csv_file_Y, column_name)
+print(f"\nNormalized Variance (Privacy) of {column_name}: {normalized_variance}")
+print(f"Variance of X - Y in {column_name} (var_diff): {var_diff}")
+print(f"Variance of {column_name} in X (var_X): {var_X}")
+print(f"Variance of {column_name} in Y (var_Y): {var_Y}")
+
+print(f"\nMinimum, Maximum and Range of {column_name} in X:")
+print(X.min(), X.max(), abs(X.max() - X.min()))
+print(f"\nMinimum, Maximum and Range of {column_name} in Y:")
+print(Y.min(), Y.max(), abs(Y.max() - Y.min()))
+print(f"\nMinimum, Maximum and Range of {column_name} in diff:")
+print(diff.min(), diff.max(), abs(diff.max() - diff.min()))
+
+
+column_name = 'sod'
+column_name, normalized_variance, var_diff, var_X, var_Y, diff, X, Y = \
+             calculate_normalized_variance(csv_file_X, csv_file_Y, column_name)
+print(f"\nNormalized Variance (Privacy) of {column_name}: {normalized_variance}")
+print(f"Variance of X - Y in {column_name} (var_diff): {var_diff}")
+print(f"Variance of {column_name} in X (var_X): {var_X}")
+print(f"Variance of {column_name} in Y (var_Y): {var_Y}")
+
+print(f"\nMinimum, Maximum and Range of {column_name} in X:")
+print(X.min(), X.max(), abs(X.max() - X.min()))
+print(f"\nMinimum, Maximum and Range of {column_name} in Y:")
+print(Y.min(), Y.max(), abs(Y.max() - Y.min()))
+print(f"\nMinimum, Maximum and Range of {column_name} in diff:")
+print(diff.min(), diff.max(), abs(diff.max() - diff.min()))
+
+column_name = 'pot'
+column_name, normalized_variance, var_diff, var_X, var_Y, diff, X, Y = \
+             calculate_normalized_variance(csv_file_X, csv_file_Y, column_name)
+print(f"\nNormalized Variance (Privacy) of {column_name}: {normalized_variance}")
+print(f"Variance of X - Y in {column_name} (var_diff): {var_diff}")
+print(f"Variance of {column_name} in X (var_X): {var_X}")
+print(f"Variance of {column_name} in Y (var_Y): {var_Y}")
+
+print(f"\nMinimum, Maximum and Range of {column_name} in X:")
+print(X.min(), X.max(), abs(X.max() - X.min()))
+print(f"\nMinimum, Maximum and Range of {column_name} in Y:")
+print(Y.min(), Y.max(), abs(Y.max() - Y.min()))
+print(f"\nMinimum, Maximum and Range of {column_name} in diff:")
+print(diff.min(), diff.max(), abs(diff.max() - diff.min()))
+
+
+column_name = 'hemo'
+column_name, normalized_variance, var_diff, var_X, var_Y, diff, X, Y = \
+             calculate_normalized_variance(csv_file_X, csv_file_Y, column_name)
+print(f"\nNormalized Variance (Privacy) of {column_name}: {normalized_variance}")
+print(f"Variance of X - Y in {column_name} (var_diff): {var_diff}")
+print(f"Variance of {column_name} in X (var_X): {var_X}")
+print(f"Variance of {column_name} in Y (var_Y): {var_Y}")
+
+print(f"\nMinimum, Maximum and Range of {column_name} in X:")
+print(X.min(), X.max(), abs(X.max() - X.min()))
+print(f"\nMinimum, Maximum and Range of {column_name} in Y:")
+print(Y.min(), Y.max(), abs(Y.max() - Y.min()))
+print(f"\nMinimum, Maximum and Range of {column_name} in diff:")
+print(diff.min(), diff.max(), abs(diff.max() - diff.min()))
+
+
+column_name = 'wc'
+column_name, normalized_variance, var_diff, var_X, var_Y, diff, X, Y = \
+             calculate_normalized_variance(csv_file_X, csv_file_Y, column_name)
+print(f"\nNormalized Variance (Privacy) of {column_name}: {normalized_variance}")
+print(f"Variance of X - Y in {column_name} (var_diff): {var_diff}")
+print(f"Variance of {column_name} in X (var_X): {var_X}")
+print(f"Variance of {column_name} in Y (var_Y): {var_Y}")
+
+print(f"\nMinimum, Maximum and Range of {column_name} in X:")
+print(X.min(), X.max(), abs(X.max() - X.min()))
+print(f"\nMinimum, Maximum and Range of {column_name} in Y:")
+print(Y.min(), Y.max(), abs(Y.max() - Y.min()))
+print(f"\nMinimum, Maximum and Range of {column_name} in diff:")
+print(diff.min(), diff.max(), abs(diff.max() - diff.min()))
+
+
+column_name = 'rc'
+column_name, normalized_variance, var_diff, var_X, var_Y, diff, X, Y = \
+             calculate_normalized_variance(csv_file_X, csv_file_Y, column_name)
+print(f"\nNormalized Variance (Privacy) of {column_name}: {normalized_variance}")
+print(f"Variance of X - Y in {column_name} (var_diff): {var_diff}")
+print(f"Variance of {column_name} in X (var_X): {var_X}")
+print(f"Variance of {column_name} in Y (var_Y): {var_Y}")
+
+print(f"\nMinimum, Maximum and Range of {column_name} in X:")
+print(X.min(), X.max(), abs(X.max() - X.min()))
+print(f"\nMinimum, Maximum and Range of {column_name} in Y:")
+print(Y.min(), Y.max(), abs(Y.max() - Y.min()))
+print(f"\nMinimum, Maximum and Range of {column_name} in diff:")
+print(diff.min(), diff.max(), abs(diff.max() - diff.min()))
+
+column_name = 'pcv'
+column_name, normalized_variance, var_diff, var_X, var_Y, diff, X, Y = \
+             calculate_normalized_variance(csv_file_X, csv_file_Y, column_name)
+print(f"\nNormalized Variance (Privacy) of {column_name}: {normalized_variance}")
+print(f"Variance of X - Y in {column_name} (var_diff): {var_diff}")
+print(f"Variance of {column_name} in X (var_X): {var_X}")
+print(f"Variance of {column_name} in Y (var_Y): {var_Y}")
+
+print(f"\nMinimum, Maximum and Range of {column_name} in X:")
+print(X.min(), X.max(), abs(X.max() - X.min()))
+print(f"\nMinimum, Maximum and Range of {column_name} in Y:")
+print(Y.min(), Y.max(), abs(Y.max() - Y.min()))
+print(f"\nMinimum, Maximum and Range of {column_name} in diff:")
+print(diff.min(), diff.max(), abs(diff.max() - diff.min()))
