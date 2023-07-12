@@ -84,19 +84,23 @@ It is recommended, but not required, to follow the guidelines below for testing 
 - Test for k-anonymity using `k = 3` and the following quasi-identifiers: `['Age', 'Temp', 'O2Sat', 'WBC', 'Resp', 'Gender']`.
 - Test for l-diversity using the same quasi-identifiers as mentioned above.
 
-**For v1_heart and v2_heart:**
+**For v1_heart:**
+- Test for l-diversity using the following quasi-identifiers: `['age_range', 'sex', 'restecg', 'fbs']`.
+
+**For v2_heart:**
 
 - Test for k-anonymity using `k = 3` and the following quasi-identifiers: `['age', 'sex', 'cp', 'trestbps', 'chol', 'fbs', 'restecg', 'thalach', 'exang', 'oldpeak', 'slope', 'ca', 'thal']`.
 - Test for l-diversity using the quasi-identifiers: `['age', 'sex']`.
 
 **For v2_sepsis:**
 
-- Test for k-anonymity using `k = 5` and the following quasi-identifiers: `['sex', 'cp', 'trestbps', 'fbs', 'restecg', 'thalach', 'exang', 'slope','ca', 'thal', 'age_range', 'chol_range', 'oldpeak_range']`.
+- Test for k-anonymity using `k = 5` and the following quasi-identifiers: `['Age', 'Gender', 'HR', 'SBP', 'MAP', 'DBP']`.
 - Test for l-diversity using the quasi-identifiers: `['Age', 'Gender']`.
 
 **For v3_heart:**
 
-- Test for k-anonymity using `k = 5` and the following quasi-identifiers: `['Age', 'Gender', 'HR', 'SBP', 'MAP', 'DBP']`.
+
+- - Test for k-anonymity using `k = 5` and the following quasi-identifiers: `['sex', 'cp', 'trestbps', 'fbs', 'restecg', 'thalach', 'exang', 'slope','ca', 'thal', 'age_range', 'chol_range', 'oldpeak_range']`.
 - Test for l-diversity using the quasi-identifiers: `['age', 'sex']`.
 
 **For v3_sepsis and v4_sepsis:**
