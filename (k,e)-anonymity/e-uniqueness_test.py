@@ -179,6 +179,34 @@ configs = [
         'e': 10,
         'k': 3,
     },
+    {
+        'file_name': 'v1_kidney.csv',
+        'quasi_identifiers': ['age', 'bp', 'bgr', 'bu', 'sc', 'hemo', 'wc', 'rc'],
+        'sensitive_attr': 'classification',
+        'e': 10,
+        'k': 2,
+    },
+    {
+        'file_name': 'v2_kidney.csv',
+        'quasi_identifiers': ['age', 'bp', 'bgr', 'bu', 'sc', 'hemo', 'wc', 'rc'],
+        'sensitive_attr': 'classification',
+        'e': 10,
+        'k': 2,
+    },
+    {
+        'file_name': 'v1_personal_key_indicators.csv',
+        'quasi_identifiers': ['Sex', 'Race'],
+        'sensitive_attr': 'HeartDisease',
+        'e': 10,
+        'k': 2,
+    },
+    {
+        'file_name': 'anonymized_PKI .csv',
+        'quasi_identifiers': ['Sex', 'Race'],
+        'sensitive_attr': 'HeartDisease',
+        'e': 10,
+        'k': 2,
+    },
     # Add other configuration dictionaries here
 ]
 
