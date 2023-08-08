@@ -82,13 +82,13 @@ class Anonymize:
         # Compute the sizes of these groups.
         group_sizes_without_sensitive = groups_without_sensitive.size()
 
-        # For each group defined by quasi-identifiers + sensitive attribute, find the corresponding
-        # group size of the group defined by quasi-identifiers only.
-        matching_group_sizes_without_sensitive = group_sizes_without_sensitive.loc[
-            group_sizes_with_sensitive.index.to_list()]
+        # For each group defined by quasi-identifiers + sensitive attribute,
+        # find the corresponding group size of the group defined by quasi-identifiers only.
+        indices_to_match = [index[:-1] for index in group_sizes_with_sensitive.index.to_list()]
+        matching_group_sizes_without_sensitive = group_sizes_without_sensitive.reindex(indices_to_match).fillna(0)
 
         # Compute the proportions.
-        proportions = group_sizes_with_sensitive / matching_group_sizes_without_sensitive
+        proportions = group_sizes_with_sensitive / matching_group_sizes_without_sensitive.values
 
         # Check if all proportions are less than or equal to 1/e.
         e_uniqueness_values = (proportions <= 1 / e)
@@ -218,6 +218,42 @@ configs = [
         'l': 2,
         'e': 10,
         'k': 3,
+    },
+    {
+        'file_name': 'v1_kidney.csv',
+        'quasi_identifiers': ['age', 'bp', 'bgr', 'bu', 'sc', 'hemo', 'wc', 'rc'],
+        'quasi_identifiers_l': ['age'],
+        'sensitive_attr': 'classification',
+        'l': 2,
+        'e': 10,
+        'k': 2,
+    },
+    {
+        'file_name': 'v2_kidney.csv',
+        'quasi_identifiers': ['age', 'bp', 'bgr', 'bu', 'sc', 'hemo', 'wc', 'rc'],
+        'quasi_identifiers_l': ['age'],
+        'sensitive_attr': 'classification',
+        'l': 2,
+        'e': 10,
+        'k': 2,
+    },
+    {
+        'file_name': 'v1_personal_key_indicators.csv',
+        'quasi_identifiers': ['Sex', 'Race'],
+        'quasi_identifiers_l': ['AgeCategory'],
+        'sensitive_attr': 'HeartDisease',
+        'l': 2,
+        'e': 10,
+        'k': 2,
+    },
+    {
+        'file_name': 'anonymized_PKI .csv',
+        'quasi_identifiers': ['Sex', 'Race'],
+        'quasi_identifiers_l': ['AgeCategory'],
+        'sensitive_attr': 'HeartDisease',
+        'l': 2,
+        'e': 10,
+        'k': 2,
     },
     # Add other configuration dictionaries here
 ]
